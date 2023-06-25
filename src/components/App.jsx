@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import SingUp from 'pages/SingUp/SingUp';
+import SingUp from 'pages/SignUp/SingUp';
 import Layout from './Layout/Layout';
 import LogIn from 'pages/LogIn/LogIn';
 import Home from 'pages/Home/Home';
