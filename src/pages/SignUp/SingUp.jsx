@@ -1,8 +1,6 @@
-import { signUp } from 'servise/apiAuth';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { store } from 'redux/store';
 import { signUpThunk } from 'redux/auth/authThunk';
 // import { toast } from 'react-toastify';
 // import { authRegister } from 'redux/auth/authThunk';
@@ -13,7 +11,6 @@ function SingUp() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const store = useSelector(store => store);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {

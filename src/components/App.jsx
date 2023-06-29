@@ -4,8 +4,17 @@ import Layout from './Layout/Layout';
 import LogIn from 'pages/LogIn/LogIn';
 import Home from 'pages/Home/Home';
 import PhoneBook from 'pages/PhoneBook/PhoneBook';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCurrentUserThunk } from 'redux/auth/authThunk';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUserThunk());
+  }, [dispatch])
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

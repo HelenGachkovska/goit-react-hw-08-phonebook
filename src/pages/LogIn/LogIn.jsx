@@ -1,6 +1,6 @@
-import { logIn } from 'servise/apiAuth';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { logInThunk } from 'redux/auth/authThunk';
 // import { authRegister } from 'redux/Auth/authThunk';
 
 function LogIn() {
@@ -15,7 +15,7 @@ function LogIn() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('submit data:', { email, password });
-    logIn({ email, password });
+    dispatch(logInThunk({ email, password }));
     setEmail('');
     setPassword('');
   };
