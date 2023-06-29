@@ -18,6 +18,7 @@ function ContactList() {
   const filteredArray = contacts.filter(el =>
     el.name.toLowerCase().trim().includes(filter.toLowerCase())
   );
+  console.log(filteredArray);
 
   return (
     <List>
