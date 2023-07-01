@@ -4,7 +4,7 @@ import { Button, Item, Text } from './styled';
 import { useDispatch } from 'react-redux';
 import { deleteContactThunk } from 'redux/thunks';
 
-const ContactItem = ({ id, name, phone }) => {
+const ContactItem = ({ id, name, number }) => {
 const dispatch = useDispatch();
   const onDelete = () => {
     dispatch(deleteContactThunk(id));
@@ -13,7 +13,7 @@ const dispatch = useDispatch();
   return (
     <Item>
       <Text>
-        {name}: {phone}
+        {name}: {number}
       </Text>
       <Button onClick={onDelete}>Delete</Button>
     </Item>
@@ -23,7 +23,7 @@ const dispatch = useDispatch();
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
 
 export default ContactItem;

@@ -1,24 +1,41 @@
-import { Button, FormLabel, Input } from '@mui/material';
+import {
+  Button,
+  FormLabel,
+  Input,
+} from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { stateSelectorIsLoggedIn } from 'redux/auth/authSelector';
-import { logInThunk } from 'redux/auth/authThunk';
+import { signUpThunk } from 'redux/auth/authThunk';
+// import { toast } from 'react-toastify';
+// import { authRegister } from 'redux/auth/authThunk';
 
-function LogIn() {
+function SingUp() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isLoggedIn = useSelector(stateSelectorIsLoggedIn);
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
-    name === 'email' ? setEmail(value) : setPassword(value);
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit data:', { email, password });
-    dispatch(logInThunk({ email, password }));
+    console.log(name, email, password);
+    dispatch(signUpThunk({ name, email, password }));
+    setName('');
     setEmail('');
     setPassword('');
   };
@@ -39,6 +56,17 @@ function LogIn() {
       }}
       onSubmit={handleSubmit}
     >
+      <FormLabel sx={{ display: 'flex', flexDirection: 'column', mb: '30px' }}>
+       Name
+        <Input
+          variant="solid"
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+        />
+      </FormLabel>
+
       <FormLabel sx={{ display: 'flex', flexDirection: 'column', mb: '30px' }}>
         E-mail
         <Input
@@ -73,10 +101,10 @@ function LogIn() {
         variant="outlined"
         type="submit"
       >
-        Log In
+        Sign Up
       </Button>
     </form>
   );
 }
 
-export default LogIn;
+export default SingUp;

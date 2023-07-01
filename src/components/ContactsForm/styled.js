@@ -6,6 +6,7 @@ export const Title = styled.h1`
   font-size: 52px;
   line-height: 1.62;
   text-align: center;
+  margin-top: 30px;
 `;
 
 export const Form = styled.form`

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUp, logIn, logOut, fetchCurrentUser, token } from 'servise/apiAuth';
+import { signUp, logIn, logOut, fetchCurrentUser } from 'servise/apiAuth';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signUp',

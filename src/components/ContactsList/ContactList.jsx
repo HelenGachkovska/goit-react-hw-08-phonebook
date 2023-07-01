@@ -26,7 +26,7 @@ function ContactList() {
       {isLoading && <p>Loading...</p>}
       {filteredArray.map(el => {
         return (
-          <ContactItem name={el.name} phone={el.phone} key={el.id} id={el.id} />
+          <ContactItem name={el.name} number={el.number} key={el.id} id={el.id} />
         );
       })}
     </List>

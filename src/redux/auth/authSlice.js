@@ -15,7 +15,6 @@ const initialState = {
 };
 
 const handleFulfilled = (state, { payload }) => {
-  console.log('singusPayload:', payload)
   state.isLoading = false;
   state.user = payload.user;
   state.token = payload.token;
@@ -30,7 +29,6 @@ const handleLogOutFulfilled = state => {
 };
 
 const handlePending = state => {
-  console.log('выполняется пендинг')
   state.isLoading = true;
 };
 
@@ -39,10 +37,7 @@ const handleRejected = state => {
 };
 
 const handleCurrentUserFulfilled = (state, action) => {
-  console.log('action', action)
   state.user = action.payload;
-  // state.user.name = payload.name;
-  // state.user.email = payload.email;
   state.isLoggedIn = true;
 };
 

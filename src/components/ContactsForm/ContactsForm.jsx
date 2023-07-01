@@ -8,7 +8,7 @@ import { addContactThunk } from 'redux/thunks';
 function ContactsForm() {
   const contacts = useSelector(stateSelectorContacts);
   const [name, setName] = useState(null);
-  const [phone, setPhone] = useState(null);
+  const [number, setNumber] = useState(null);
   const dispatch = useDispatch();
 
   const handlerInputName = e => {
@@ -16,7 +16,7 @@ function ContactsForm() {
   };
 
   const handlerInputNumber = e => {
-    setPhone(e.target.value);
+    setNumber(e.target.value);
   };
 
   const handlerSubmitForm = e => {
@@ -26,7 +26,7 @@ function ContactsForm() {
       alert(`${name} is already in contacts`);
       return;
     } else {
-      const newContact = { name, phone, id: nanoid() };
+      const newContact = { name, number, id: nanoid() };
       dispatch(addContactThunk(newContact));
     }
     e.target.reset();
