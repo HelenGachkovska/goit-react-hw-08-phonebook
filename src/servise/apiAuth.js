@@ -31,6 +31,5 @@ export const logOut = async () => {
 export const fetchCurrentUser = async (persistedToken) => {
   token.set(persistedToken);
   const { data } = await axios.get('/users/current');
-  console.log('data:', data)
   return data;
 }

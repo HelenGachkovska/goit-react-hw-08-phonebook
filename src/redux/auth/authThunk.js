@@ -1,14 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { signUp, logIn, logOut, fetchCurrentUser } from 'servise/apiAuth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signUp',
   (data, { rejectWithValue }) => {
     try {
-      alert('Sign Up successfully!!!');
+      toast.success('Sign Up successfully!!!', {
+        position: 'top-right',
+      });
       return signUp(data);
     } catch (error) {
-      alert('Enter correct data!');
+      toast.error('Enter correct data!', {
+        position: 'top-right',
+      });
+
       return rejectWithValue(error);
     }
   }
@@ -16,12 +23,17 @@ export const signUpThunk = createAsyncThunk(
 
 export const logInThunk = createAsyncThunk(
   'auth/logIn',
-  (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      alert('Log In successfully!!!');
-      return logIn(data);
+      const result = await logIn(data);
+      toast.success('Successfully logOut!', {
+        position: 'top-right',
+      });
+      return result;
     } catch (error) {
-      alert('Enter correct data!');
+      toast.error('Enter correct data!', {
+        position: 'top-right',
+      });
       return rejectWithValue(error);
     }
   }
@@ -43,16 +55,12 @@ export const fetchCurrentUserThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    // console.log(persistedToken);
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
 
     try {
-      // token.set(persistedToken);
       return fetchCurrentUser(persistedToken);
-      // const response = await axios.get('/users/current');
-      // return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

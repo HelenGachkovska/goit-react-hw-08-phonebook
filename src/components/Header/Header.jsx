@@ -10,11 +10,9 @@ import { stateSelectorIsLoggedIn } from 'redux/auth/authSelector';
 function Header() {
   const isLoggedIn = useSelector(stateSelectorIsLoggedIn);
 
-  console.log('isLoggedIn', isLoggedIn);
-
   return (
     <>
-      <Toolbar>
+      <Toolbar >
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
           <Typography variant="h6">PHONRBOOK</Typography>
           <NavLink to="/">
@@ -26,14 +24,18 @@ function Header() {
               Home
             </Button>
           </NavLink>
-       
-        {isLoggedIn && (
-          <NavLink to="/contacts">
-            <Button sx={{ margin: '10px', color: 'white', borderColor: 'white'  }}
-                variant="outlined" >PhoneBook</Button>
-          </NavLink>
+
+          {isLoggedIn && (
+            <NavLink to="/contacts">
+              <Button
+                sx={{ margin: '10px', color: 'white', borderColor: 'white' }}
+                variant="outlined"
+              >
+                PhoneBook
+              </Button>
+            </NavLink>
           )}
-           </Box>
+        </Box>
         {isLoggedIn ? (
           <UserMenu />
         ) : (
@@ -41,7 +43,7 @@ function Header() {
             <NavLink to="/register">
               <Button
                 startIcon={<HowToRegIcon />}
-                sx={{ margin: '10px', color: 'white', borderColor: 'white'  }}
+                sx={{ margin: '10px', color: 'white', borderColor: 'white' }}
                 variant="outlined"
               >
                 Sign Up
@@ -50,7 +52,7 @@ function Header() {
             <NavLink to="/login">
               <Button
                 startIcon={<LoginIcon />}
-                sx={{ margin: '10px', color: 'white', borderColor: 'white'  }}
+                sx={{ margin: '10px', color: 'white', borderColor: 'white' }}
                 variant="outlined"
               >
                 Log In

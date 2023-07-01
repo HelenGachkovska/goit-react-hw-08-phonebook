@@ -17,7 +17,6 @@ function LogIn() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('submit data:', { email, password });
     dispatch(logInThunk({ email, password }));
     setEmail('');
     setPassword('');
