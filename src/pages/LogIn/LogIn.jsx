@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { stateSelectorIsLoggedIn } from 'redux/auth/authSelector';
 import { logInThunk } from 'redux/auth/authThunk';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LogIn() {
   const [email, setEmail] = useState('');
@@ -17,9 +19,20 @@ function LogIn() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(logInThunk({ email, password }));
-    setEmail('');
-    setPassword('');
+    dispatch(logInThunk({ email, password }))
+      .unwrap()
+      .then(() => {
+        setEmail('');
+        setPassword('');
+      })
+      .catch(error => {
+        toast.error('You have entered incorrect data, please try again!', {
+          position: 'top-right',
+        });
+        throw new Error(error.message);
+      });
+    // setEmail('');
+    // setPassword('');
   };
 
   if (isLoggedIn) {
