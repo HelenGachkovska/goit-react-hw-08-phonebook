@@ -42,6 +42,7 @@ function SingUp() {
           position: 'top-right',
         });
         throw new Error(error.message);
+    
       });
     // setName('');
     // setEmail('');

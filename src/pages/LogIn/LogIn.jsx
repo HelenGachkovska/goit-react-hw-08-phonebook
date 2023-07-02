@@ -30,6 +30,7 @@ function LogIn() {
           position: 'top-right',
         });
         throw new Error(error.message);
+        
       });
     // setEmail('');
     // setPassword('');
