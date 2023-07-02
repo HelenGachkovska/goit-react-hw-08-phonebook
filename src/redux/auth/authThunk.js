@@ -12,10 +12,6 @@ export const signUpThunk = createAsyncThunk(
       });
       return signUp(data);
     } catch (error) {
-      toast.error('Enter correct data!', {
-        position: 'top-right',
-      });
-
       return rejectWithValue(error);
     }
   }
@@ -31,9 +27,6 @@ export const logInThunk = createAsyncThunk(
       });
       return result;
     } catch (error) {
-      toast.error('Enter correct data!', {
-        position: 'top-right',
-      });
       return rejectWithValue(error);
     }
   }
